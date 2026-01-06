@@ -60,14 +60,10 @@ export class Mind {
   private config: MindConfig;
   private sessionId: string;
   private initialized = false;
-  private memoryPath: string;
-  private lockPath: string;
 
-  private constructor(memvid: Memvid, config: MindConfig, memoryPath: string) {
+  private constructor(memvid: Memvid, config: MindConfig) {
     this.memvid = memvid;
     this.config = config;
-    this.memoryPath = memoryPath;
-    this.lockPath = `${memoryPath}.lock`;
     this.sessionId = generateId();
   }
 
@@ -135,7 +131,7 @@ export class Mind {
       }
     });
 
-    const mind = new Mind(memvid, config, memoryPath);
+    const mind = new Mind(memvid, config);
     mind.initialized = true;
 
     if (config.debug) {
@@ -146,7 +142,9 @@ export class Mind {
   }
 
   private async withLock<T>(fn: () => Promise<T>): Promise<T> {
-    return withMemvidLock(this.lockPath, fn);
+    const memoryPath = this.getMemoryPath();
+    const lockPath = `${memoryPath}.lock`;
+    return withMemvidLock(lockPath, fn);
   }
 
   /**
@@ -359,7 +357,7 @@ export class Mind {
    * Get the memory file path
    */
   getMemoryPath(): string {
-    return this.memoryPath;
+    return resolve(process.cwd(), this.config.memoryPath);
   }
 
   /**
