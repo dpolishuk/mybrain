@@ -2,7 +2,7 @@
 
 <img src="logo.png" alt="Claude Brain" width="320" />
 
-### Give Claude Code photographic memory.
+### Give Claude Code and OpenCode photographic memory.
 
 [![GitHub stars](https://img.shields.io/github/stars/memvid/claude-brain?style=social)](https://github.com/memvid/claude-brain)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -48,6 +48,8 @@ One file. Claude remembers everything.
 
 ## Installation
 
+### Claude Code
+
 ```bash
 # One-time setup (if you haven't used GitHub plugins before)
 git config --global url."https://github.com/".insteadOf "git@github.com:"
@@ -59,6 +61,28 @@ git config --global url."https://github.com/".insteadOf "git@github.com:"
 ```
 
 Then: `/plugins` → Installed → **mind** Enable Plugin → Restart.
+
+### OpenCode
+
+Add to your `opencode.json`:
+
+```json
+{
+  "plugin": ["claude-brain"]
+}
+```
+
+Or install via npm:
+
+```bash
+npm install claude-brain
+```
+
+### One-line Installer (Both Platforms)
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/memvid/claude-brain/main/install.sh | bash
+```
 
 Done.
 
@@ -90,7 +114,7 @@ No database. No cloud. No API keys.
 
 ## Commands
 
-**In Claude Code:**
+**In Claude Code or OpenCode:**
 ```bash
 /mind stats                       # memory statistics
 /mind search "authentication"     # find past context
@@ -99,6 +123,19 @@ No database. No cloud. No API keys.
 ```
 
 Or just ask naturally: *"mind stats"*, *"search my memory for auth bugs"*, etc.
+
+<br />
+
+## Platform Comparison
+
+| Feature | Claude Code | OpenCode |
+|---------|-------------|----------|
+| Installation | `/plugin add marketplace` | `opencode.json` |
+| Memory file | `.claude/mind.mv2` | `.claude/mind.mv2` |
+| Commands | `/mind:*` | `/mind:*` |
+| Skills | `skills/` directory | `skills/` directory |
+| Observation capture | PostToolUse hook | tool.execute.after |
+| Session context | SessionStart hook | session.created event |
 
 <br />
 
@@ -148,6 +185,13 @@ Sub-millisecond. Native Rust core. Searches 10K+ memories in <1ms.
 <summary><b>Reset memory?</b></summary>
 
 `rm .claude/mind.mv2`
+
+</details>
+
+<details>
+<summary><b>Can I use the same memory file for both Claude Code and OpenCode?</b></summary>
+
+Yes! The `.mv2` file is portable and works with both platforms. Share one memory across tools.
 
 </details>
 
