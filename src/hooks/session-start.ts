@@ -59,14 +59,15 @@ async function main() {
       contextLines.push("# 🧠 Claude Mind Ready");
       contextLines.push("");
       contextLines.push(`📁 Project: **${projectName}**`);
-      contextLines.push("💾 Memory will be created at: \`.claude/mind.mv2\`");
+      contextLines.push("💾 Memory will be created at: `.claude/mind.mv2`");
       contextLines.push("");
       contextLines.push("_Your observations will be automatically captured._");
       contextLines.push("</memvid-mind-context>");
     }
 
-    // SessionStart hooks use hookSpecificOutput.additionalContext
-    const output: any = {
+// SessionStart hooks use hookSpecificOutput.additionalContext
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const output: any = {
       continue: true,
     };
 
