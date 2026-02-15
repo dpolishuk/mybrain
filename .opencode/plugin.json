@@ -1,0 +1,9 @@
+{
+  "name": "claude-brain",
+  "description": "Persistent memory for OpenCode via single .mv2 file",
+  "version": "1.1.0",
+  "main": "dist/hooks/opencode/index.js",
+  "author": "Memvid <hello@memvid.com>",
+  "license": "MIT",
+  "repository": "https://github.com/memvid/claude-brain"
+}

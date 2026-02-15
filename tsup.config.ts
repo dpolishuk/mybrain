@@ -7,6 +7,7 @@ export default defineConfig({
     "hooks/session-start": "src/hooks/session-start.ts",
     "hooks/post-tool-use": "src/hooks/post-tool-use.ts",
     "hooks/stop": "src/hooks/stop.ts",
+    "hooks/opencode/index": "src/hooks/opencode/index.ts",
     // SDK-based scripts (no CLI dependency)
     "scripts/find": "src/scripts/find.ts",
     "scripts/ask": "src/scripts/ask.ts",
