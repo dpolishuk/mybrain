@@ -231,6 +231,27 @@ Yes! The `.mv2` file is portable and works with both platforms. Share one memory
 
 </details>
 
+<details>
+<summary><b>OpenCode shows "Failed to load embedding model" error?</b></summary>
+
+This is an OpenCode internal error, not from claude-brain. Fix it by running:
+
+```bash
+# Option 1: Allow model downloads
+export TRANSFORMERS_JS_DISABLE_DOWNLOAD=false
+
+# Option 2: Re-run the installer (downloads model automatically)
+curl -fsSL https://raw.githubusercontent.com/memvid/claude-brain/main/install.sh | bash
+
+# Option 3: Add to your shell config permanently
+echo 'export TRANSFORMERS_JS_DISABLE_DOWNLOAD=false' >> ~/.zshrc
+source ~/.zshrc
+```
+
+Then restart OpenCode.
+
+</details>
+
 <br />
 
 ---
