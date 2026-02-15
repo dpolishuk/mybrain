@@ -64,19 +64,55 @@ Then: `/plugins` → Installed → **mind** Enable Plugin → Restart.
 
 ### OpenCode
 
-Add to your `opencode.json`:
+**Step 1: Create `opencode.json` (if needed)**
+
+Check if your project has an `opencode.json` file. If not, create one in your project root:
 
 ```json
 {
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": []
+}
+```
+
+**Step 2: Add claude-brain plugin**
+
+Add `claude-brain` to the `plugin` array:
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
   "plugin": ["claude-brain"]
 }
 ```
 
-Or install via npm:
+If you already have plugins, append to the array:
+
+```json
+{
+  "plugin": ["your-existing-plugin", "claude-brain"]
+}
+```
+
+**Step 3: Install the package**
 
 ```bash
 npm install claude-brain
 ```
+
+**Step 4: Restart OpenCode**
+
+Restart OpenCode to load the plugin.
+
+**Step 5: Verify installation**
+
+Run this command to confirm it works:
+
+```
+/mind stats
+```
+
+You should see memory statistics. If you see "Memory will be created", the plugin is working and will create the memory file on first use.
 
 ### One-line Installer (Both Platforms)
 
